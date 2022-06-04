@@ -1,0 +1,2 @@
+- proper tests
+- proper logger for debugging

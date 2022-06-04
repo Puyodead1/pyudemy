@@ -9,23 +9,23 @@ class UdemyAsset(UdemyBase):
         self._asset_type = data.get("asset_type")
         self._length = data.get("length")
         self._captions = []
-        for caption in data.get("captions"):
+        for caption in data.get("captions", []):
             self._captions.append(UdemyCaption(caption))
         self._external_url = data.get("external_url")
         self._media_license_token = data.get("media_license_token")
         self._media_sources = []
-        for media_source in data.get("media_sources"):
+        for media_source in data.get("media_sources", []):
             self._media_sources.append(UdemyMediaSource(media_source))
         self._course_is_drmed = data.get("course_is_drmed")
-        self._download_urls = data.get("download_urls") # unknown type
-        self._slide_urls = data.get("slide_urls") # unknown type
-        self._slides = data.get("slides") # unknown type
+        self._download_urls = data.get("download_urls")  # unknown type
+        self._slide_urls = data.get("slide_urls")  # unknown type
+        self._slides = data.get("slides")  # unknown type
         self._thumbnail_sprite = data.get("thumbnail_sprite")
         self._title = data.get("title")
         self._status = data.get("status")
         self._filename = data.get("filename")
         self._time_estimation = data.get("time_estimation")
-    
+
     @property
     def asset_type(self):
         return self._asset_type

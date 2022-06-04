@@ -1,4 +1,5 @@
 from pyudemy.structs.UdemyBase import UdemyBase
+from pyudemy.structs.UdemyChapter import UdemyChapter
 from pyudemy.structs.UdemyUser import UdemyUser
 
 
@@ -12,7 +13,7 @@ class UdemyCourse(UdemyBase):
         self._price_detail = data.get("price_detail")
         self._price_serve_tracking_id = data.get("price_serve_tracking_id")
         self._visible_instructors = []
-        for instructor in data.get("visible_instructors"):
+        for instructor in data.get("visible_instructors", []):
             self._visible_instructors.append(UdemyUser(instructor))
 
         self._image_125_h = data.get("image_125_H")
@@ -25,7 +26,7 @@ class UdemyCourse(UdemyBase):
     @property
     def title(self):
         return self._title
-    
+
     @title.setter
     def title(self, value):
         self._title = value
@@ -127,7 +128,7 @@ class UdemyCourse(UdemyBase):
         self._tracking_id = value
 
     def __str__(self):
-        return f"{self.title}"
+        return self.title
 
     def __repr__(self):
-        return f"{self.title}"
+        return self.title
